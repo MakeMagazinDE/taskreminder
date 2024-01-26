@@ -1,0 +1,24 @@
+Formel in B1:
+=ArrayFormula(
+  IFS(
+    ROW(E:E)=1, "Lookup",
+    ROW(E:E)>1,TEXT(MONTH(F:F),"00")&TEXT(DAY(F:F),"00")&LEFT((H:H),1)&(C:C)&IF(LEN((K:K))>1,"done","open")
+  )
+)
+
+Formel in C1:
+=ArrayFormula(
+  IFS(
+    ROW(F:F)=1, "Past",
+    (F:F)<TODAY(), TRUE(),
+    (F:F)>=TODAY(), FALSE()
+  )
+)
+
+Formel in D1:
+=ArrayFormula(
+  IF(
+    ROW(J:J)=1, "Summary",
+    IFERROR(LEFT(J:J, FIND("@", J:J) - 1)&": "&E:E,"")
+  )
+)

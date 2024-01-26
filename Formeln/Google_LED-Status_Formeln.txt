@@ -1,0 +1,25 @@
+//Formel in Zelle B2 
+=IFERROR(VLOOKUP(TEXT(MONTH(TODAY()),"00")&TEXT(DAY(TODAY()),"00")&A2&"FALSEopen",Aufgabenliste!B:K,7,FALSE()),"")
+
+//Formel in Zelle C2 
+=IFERROR(VLOOKUP(TEXT(MONTH(TODAY()),"00")&TEXT(DAY(TODAY()),"00")&A5&"FALSEopen",Aufgabenliste!B:K,3,FALSE()),"")
+
+//Formel in Zelle D2 
+=IFERROR(LOWER(SUBSTITUTE(LEFT(VLOOKUP(TEXT(MONTH(TODAY()),"00")&TEXT(DAY(TODAY()),"00")&A2&"FALSEopen",Aufgabenliste!B:K,8,FALSE()), 
+IFERROR(FIND("(", VLOOKUP(TEXT(MONTH(TODAY()),"00")&TEXT(DAY(TODAY()),"00")&A2&"FALSEopen",Aufgabenliste!B:K,8,FALSE())),LEN(VLOOKUP(TEXT(MONTH(TODAY()),"00")
+&TEXT(DAY(TODAY()),"00")&A2&"FALSEopen",Aufgabenliste!B:K,8,FALSE()))+1) - 1), " ", "")),"")
+
+//Formel in Zelle E2 
+=IF(AND(D2<>"", F2=TODAY(), IF(ISNUMBER(H2), TEXT(G2,"HH:MM")<TEXT(NOW(),"HH:MM"), TRUE)), "on", "off")
+
+//Formel in Zelle F2 
+=IFERROR(VLOOKUP(TEXT(MONTH(TODAY()),"00")&TEXT(DAY(TODAY()),"00")&A2&"FALSEopen",Aufgabenliste!B:K,5,FALSE()),"")
+
+//Formel in Zelle G2 
+=IFERROR(TEXT(VLOOKUP(TEXT(MONTH(TODAY()),"00")&TEXT(DAY(TODAY()),"00")&A2&"FALSEopen",Aufgabenliste!B:K,6,FALSE()),"HH:MM"),"")
+
+//Formel in Zelle H2 
+=IFERROR(ROW(VLOOKUP(TEXT(MONTH(TODAY()),"00")&TEXT(DAY(TODAY()),"00")&A2&"FALSEopen",Aufgabenliste!B:K,10,FALSE())),"")
+
+
+
