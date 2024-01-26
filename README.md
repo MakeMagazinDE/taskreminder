@@ -9,6 +9,6 @@ Maker Media GmbH
 
 Ergänzend zum Artikel aus der Make 1/24 findest du hier die benötigten MicroPython-Programme für den ESP32, die Formeln für das Google-Sheet sowie die CAD-Daten für die Platine und das Gehäuse des Task-Reminders.
 
-![Picture](https://github.com/MakeMagazinDE/taskreminder/blob/main/taskreminder.jpg)
+![Picture](https://github.com/MakeMagazinDE/taskreminder/blob/main/taskreminder_quer.jpg)
 
 Den Artikel mit der Bauanleitung gibt es in der **[Make-Ausgabe 1/24](https://www.heise.de/select/make/2024/1)** zu lesen.
