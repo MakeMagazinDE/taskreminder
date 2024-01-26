@@ -1,0 +1,29 @@
+function doPost(e) {
+  var data = JSON.parse(e.postData.contents);
+  var sheetName = "Aufgabenliste";
+  var StartColumn = 5;
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(sheetName);
+  var headers = sheet.getRange(1, StartColumn, 1, sheet.getLastColumn()).getValues()[0];
+  var newRowValues = headers.map(function(header) {
+    return data[header] || '';
+  });
+
+  // Check if ROW_ID is provided and exists in the JSON data
+  if (data.hasOwnProperty('ROW_ID') && data['ROW_ID'] !== '') {
+    var rowId = parseInt(data['ROW_ID']);
+    var currentRowValues = sheet.getRange(rowId, StartColumn, 1, newRowValues.length).getValues()[0];
+    for (var i = 0; i < newRowValues.length; i++) {
+      if (newRowValues[i] !== '') {
+        currentRowValues[i] = newRowValues[i];
+      }
+    }
+    // Update the existing row
+    sheet.getRange(rowId, StartColumn, 1, currentRowValues.length).setValues([currentRowValues]);
+    return ContentService.createTextOutput("Row updated with values: " + JSON.stringify(currentRowValues));
+  } else {
+    // Add a new row
+    var lastRow = sheet.getLastRow();
+    sheet.getRange(lastRow + 1, StartColumn, 1, newRowValues.length).setValues([newRowValues]);
+    return ContentService.createTextOutput("New row added with values: " + JSON.stringify(newRowValues));
+  }
+}

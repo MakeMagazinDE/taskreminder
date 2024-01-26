@@ -1,0 +1,23 @@
+function doGet() {
+  return fetch_led_status();
+}
+
+function fetch_led_status() {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("LED_Status");
+  var range = sheet.getRange("A1:H6");
+  var values = range.getValues();
+  var headers = values[0];
+  var led_status = values.slice(1);
+
+  // Convert data into JSON format
+  var jsonData = [];
+  for (var i = 0; i < led_status.length; i++) {
+    var row = {};
+    for (var j = 0; j < headers.length; j++) {
+      row[headers[j]] = led_status[i][j];
+    }
+    jsonData.push(row);
+  }
+
+  return ContentService.createTextOutput(JSON.stringify(jsonData)).setMimeType(ContentService.MimeType.JSON);
+}
