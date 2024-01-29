@@ -16,7 +16,7 @@ UPLOAD_URL = 'Hier URL einsetzen'        # Anpassen !!!
 DOWNLOAD_URL = 'Hier URL einsetzen'     # Anpassen !!!
 
 # Konfiguration der ESP32 IO-Pins zum Anschluss der Taster
-BUTTON_PINS = [2, 34, 4, 14, 32]
+BUTTON_PINS = [2, 34, 4, 14, 32] #entspricht SW1, SW2, SW3, SW4, SW5
  
 # Konfiguration der Spaltenüberschriften im Google-Sheet
 # Nicht ändern, da sonst auch das Google-Script angepasst werden muss
